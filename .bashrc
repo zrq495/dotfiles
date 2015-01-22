@@ -69,3 +69,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# bash history
+export HISTFILESIZE=
+export HISTSIZE=

@@ -13,6 +13,18 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'bling/vim-airline'
 
+Plugin 'terryma/vim-multiple-cursors'
+
+Plugin 'Yggdroot/indentLine'
+
+Plugin 'nvie/vim-flake8'
+
+Plugin 'airblade/vim-gitgutter'
+
+Plugin 'scrooloose/nerdtree'
+
+" Plugin 'jistr/vim-nerdtree-tabs'
+
 " Plugin 'scrooloose/nerdtree'
 
 " The following are examples of different formats supported.
@@ -57,9 +69,12 @@ colorscheme solarized
 
 " Spaces & Tabs
 set number              " line number
-" set tabstop=4           " number of visual spaces per TAB
+set tabstop=4           " number of visual spaces per TAB
+set shiftwidth=4        " To change the number of space characters inserted for indentation
 set softtabstop=4       " number of spaces in tab when editing
 set expandtab           " tabs are spaces
+set smartindent
+set autoindent          " align the new line indent with the previous line
 autocmd FileType python setlocal et sta sw=4 sts=4 
                         " convert tab to space
 
@@ -99,3 +114,58 @@ set backspace=indent,eol,start
 " air line
 set laststatus=2
 " let g:airline#extensions#tabline#enabled = 1
+
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,gb2312,gbk,big5,euc-jp,euc-kr,latin1
+
+" Uncomment the following to have Vim jump to the last position when
+" " reopening a file
+if has("autocmd")
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+endif
+
+if has("vms")
+  set nobackup		" do not keep a backup file, use versions instead
+else
+  set backup		" keep a backup file (restore to previous version)
+  set backupdir=~/.vim_backup,.,/tmp
+  set undofile		" keep an undo file (undo changes after closing)
+  set undodir=~/.vim_undo,.,/tmp
+endif
+
+" In many terminal emulators the mouse works just fine, thus enable it.
+if has('mouse')
+  set mouse=a
+endif
+
+" 关键字补全
+"   即简单地补全到文档中已有的词，快捷键为 Ctrl-N 或 Ctrl-P。
+" 智能补全
+"   Vim 7中引入 Omni Complete，可根据语义补全，快捷键为 Ctrl-X Ctrl-O。
+"让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+set completeopt+=longest
+"离开插入模式后自动关闭预览窗口
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+"回车即选中当前项
+inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
+
+" To make vsplit put the new buffer on the right of the current buffer:
+set splitright
+" Similarly, to make split put the new buffer below the current buffer:
+set splitbelow
+
+" vim-flake8
+" let g:flake8_show_quickfix=0  " don't show
+let g:flake8_show_in_gutter=1
+let g:flake8_show_in_file=1
+autocmd BufWritePost *.py call Flake8()
+
+" vim-gitgutter
+let g:gitgutter_map_keys = 0
+
+" vim airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+
