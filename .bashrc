@@ -72,3 +72,6 @@ fi
 # bash history
 export HISTFILESIZE=
 export HISTSIZE=
+
+# completion ignore case
+bind 'set completion-ignore-case on'

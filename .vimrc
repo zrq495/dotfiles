@@ -17,11 +17,13 @@ Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'Yggdroot/indentLine'
 
-Plugin 'nvie/vim-flake8'
+" Plugin 'nvie/vim-flake8'
 
 Plugin 'airblade/vim-gitgutter'
 
 Plugin 'scrooloose/nerdtree'
+
+Plugin 'scrooloose/syntastic'
 
 " Plugin 'jistr/vim-nerdtree-tabs'
 
@@ -157,10 +159,10 @@ set splitright
 set splitbelow
 
 " vim-flake8
-" let g:flake8_show_quickfix=0  " don't show
-let g:flake8_show_in_gutter=1
-let g:flake8_show_in_file=1
-autocmd BufWritePost *.py call Flake8()
+"let g:flake8_show_quickfix=0  " don't show
+"let g:flake8_show_in_gutter=1
+"let g:flake8_show_in_file=1
+"autocmd BufWritePost *.py call Flake8()
 
 " vim-gitgutter
 let g:gitgutter_map_keys = 0
@@ -169,3 +171,22 @@ let g:gitgutter_map_keys = 0
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" the minimum number of screen lines that you would like above and below the cursor.
+:set scrolloff=5
+
+" make search results appear in the middle of the screen
+:nnoremap n nzz
+:nnoremap N Nzz
+:nnoremap * *zz
+:nnoremap # #zz
+:nnoremap g* g*zz
+:nnoremap g# g#zz
