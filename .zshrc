@@ -46,7 +46,9 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git autopep8 osx python tmux virtualenvwrapper git-flow django pip autojump vundle brew sublime sudo command-not-found)
+plugins=(git osx python tmux git-flow pip autojump brew sublime sudo docker)
+
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
 source $ZSH/oh-my-zsh.sh
 

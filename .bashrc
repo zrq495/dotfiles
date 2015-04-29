@@ -75,3 +75,10 @@ export HISTSIZE=
 
 # completion ignore case
 bind 'set completion-ignore-case on'
+
+# docker
+export DOCKER_HOST=tcp://192.168.59.103:2376
+export DOCKER_CERT_PATH=/Users/zrq495/.boot2docker/certs/boot2docker-vm
+export DOCKER_TLS_VERIFY=1
+
+[[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
