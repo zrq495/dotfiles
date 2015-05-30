@@ -25,6 +25,10 @@ Plugin 'scrooloose/nerdtree'
 
 Plugin 'scrooloose/syntastic'
 
+Plugin 'kshenoy/vim-signature'
+
+Plugin 'scrooloose/nerdcommenter'
+
 " Plugin 'jistr/vim-nerdtree-tabs'
 
 " Plugin 'scrooloose/nerdtree'
@@ -61,6 +65,64 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 " vundle end
 
+" change the mapleader from \ to ,
+let mapleader = ","
+let g:mapleader = ","
+
+" Fast saving
+nmap <leader>w :w!<cr>
+
+" :W sudo saves the file 
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
+
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Close the current buffer
+" map <leader>bd :Bclose<cr>
+map <leader>bd :bdelete<cr>
+
+" Close all the buffers
+map <leader>ba :1,1000 bd!<cr>
+
+" Opens a new buffer with the current buffer's path
+map <leader>bs :sp <c-r>=expand("%:p:h")<cr>/
+map <leader>bv :vs <c-r>=expand("%:p:h")<cr>/
+map <leader>be :e <c-r>=expand("%:p:h")<cr>/
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove 
+map <leader>t<leader> :tabnext<cr>
+
+" Let 'tl' toggle between this and the last accessed tab
+let g:lasttab = 1
+nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+
+
+" Opens a new tab with the current buffer's path
+" Super useful when editing files in the same directory
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
+
+" Specify the behavior when switching between buffers 
+try
+  set switchbuf=useopen,usetab,newtab
+  set stal=2
+catch
+endtry
+" Remember info about open buffers on close
+set viminfo^=%
+
 
 " Colors
 syntax enable
@@ -91,7 +153,7 @@ set showmatch           " highlight matching [{()}]
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 nnoremap <leader><space> :nohlsearch<CR>    
-                        " turn off search highlight   "\ "
+                        " turn off search highlight   "<leader>space"
 set ignorecase smartcase    " auto ignorecase when search
 
 " Folding
@@ -110,7 +172,9 @@ nnoremap gV `[v`]
                         " highlight last inserted text
 
 " allow backspacing over everything in insert mode 
+" Configure backspace so it acts as it should act
 set backspace=indent,eol,start
+" set whichwrap+=<,>,h,l
 
 
 " air line
@@ -190,3 +254,18 @@ let g:syntastic_check_on_wq = 0
 :nnoremap # #zz
 :nnoremap g* g*zz
 :nnoremap g# g#zz
+
+" 禁止折行
+" set nowrap
+
+" plugin:nerdcommenter config
+let NERDSpaceDelims=1
+
+" Quickly insert parenthesis/brackets/etc.:
+inoremap $1 ()<esc>i
+inoremap $2 []<esc>i
+inoremap $3 {}<esc>i
+inoremap $4 {<esc>o}<esc>O
+inoremap $q ''<esc>i
+inoremap $e ""<esc>i
+inoremap $t <><esc>i
