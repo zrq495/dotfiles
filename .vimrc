@@ -33,6 +33,16 @@ Plugin 'scrooloose/nerdcommenter'
 
 " Plugin 'scrooloose/nerdtree'
 
+Bundle 'ervandew/supertab'
+
+Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'mileszs/ack.vim'
+
+Plugin 'SirVer/ultisnips'
+
+Plugin 'honza/vim-snippets'
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -127,8 +137,10 @@ set viminfo^=%
 " Colors
 syntax enable
 set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans = 1
+if $TERM_PROGRAM == "Apple_Terminal"
+    let g:solarized_termcolors=256
+    let g:solarized_termtrans = 1
+endif
 colorscheme solarized
 
 " Spaces & Tabs
@@ -234,6 +246,8 @@ let g:gitgutter_map_keys = 0
 " vim airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
+let g:airline_powerline_fonts = 1
+let g:airline_theme='solarized'
 
 " syntastic
 set statusline+=%#warningmsg#
@@ -259,13 +273,38 @@ let g:syntastic_check_on_wq = 0
 " set nowrap
 
 " plugin:nerdcommenter config
+" 注释的时候自动加个空格
 let NERDSpaceDelims=1
 
-" Quickly insert parenthesis/brackets/etc.:
-inoremap $1 ()<esc>i
-inoremap $2 []<esc>i
-inoremap $3 {}<esc>i
-inoremap $4 {<esc>o}<esc>O
-inoremap $q ''<esc>i
-inoremap $e ""<esc>i
-inoremap $t <><esc>i
+" " Quickly insert parenthesis/brackets/etc.:
+" inoremap $1 ()<esc>i
+" inoremap $2 []<esc>i
+" inoremap $3 {}<esc>i
+" inoremap $4 {<esc>o}<esc>O
+" inoremap $q ''<esc>i
+" inoremap $e ""<esc>i
+" inoremap $t <><esc>i
+
+" 退出vim后，内容显示在终端屏幕, 可以用于查看和复制
+" set t_ti= t_te=
+" for # indent, python文件中输入新行时#号注释不切回行首
+autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
+"Reselect visual block after indent/outdent.调整缩进后自动选中，方便再次操作
+vnoremap < <gv
+vnoremap > >gv
+
+" UltiSnips config
+" " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<c-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"

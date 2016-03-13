@@ -5,7 +5,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
+# ZSH_THEME="robbyrussell"
 # ZSH_THEME="random"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -98,17 +99,21 @@ PATH=$PATH:/usr/local/sbin
 
 # go
 export GOPATH=$HOME/Dropbox/go
-#export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
-export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+# export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
 
-# docker
-export DOCKER_CERT_PATH=/Users/zrq495/.boot2docker/certs/boot2docker-vm
-export DOCKER_TLS_VERIFY=1
-export DOCKER_HOST=tcp://192.168.59.103:2376
-docker-enter() {
-  boot2docker ssh '[ -f /var/lib/boot2docker/nsenter ] || docker run --rm -v /var/lib/boot2docker/:/target jpetazzo/nsenter'
-  boot2docker ssh -t sudo /var/lib/boot2docker/docker-enter "$@"
-}
+# # docker
+# export DOCKER_CERT_PATH=/Users/zrq495/.boot2docker/certs/boot2docker-vm
+# export DOCKER_TLS_VERIFY=1
+# export DOCKER_HOST=tcp://192.168.59.100:2376
+# docker-enter() {
+  # boot2docker ssh '[ -f /var/lib/boot2docker/nsenter ] || docker run --rm -v /var/lib/boot2docker/:/target jpetazzo/nsenter'
+  # boot2docker ssh -t sudo /var/lib/boot2docker/docker-enter "$@"
+# }
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.99.100:2376"
+export DOCKER_CERT_PATH="/Users/zrq495/.docker/machine/machines/default"
+export DOCKER_MACHINE_NAME="default"
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
 source /usr/local/bin/virtualenvwrapper.sh
@@ -116,3 +121,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
+# fixes 10.11 sip(rootless)
+export PATH="/usr/local/bin:$PATH"
+
+[[ -n "$SSH_CLIENT" ]] || export DEFAULT_USER="zrq495"
