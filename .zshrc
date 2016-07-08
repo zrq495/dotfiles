@@ -47,7 +47,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx python tmux git-flow pip autojump brew sublime sudo docker)
+plugins=(git osx python tmux git-flow pip autojump brew sublime sudo docker go)
 
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
@@ -98,7 +98,7 @@ export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 PATH=$PATH:/usr/local/sbin
 
 # go
-export GOPATH=$HOME/Dropbox/go
+export GOPATH=$HOME/Code/go
 export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
 # export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
 
@@ -114,6 +114,10 @@ export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.99.100:2376"
 export DOCKER_CERT_PATH="/Users/zrq495/.docker/machine/machines/default"
 export DOCKER_MACHINE_NAME="default"
+# unset DOCKER_TLS_VERIFY
+# unset DOCKER_CERT_PATH
+# unset DOCKER_MACHINE_NAME
+# unset DOCKER_HOST
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
 source /usr/local/bin/virtualenvwrapper.sh

@@ -1,3 +1,1 @@
-vim
-zsh
-bash
+Some configuration

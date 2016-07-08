@@ -43,6 +43,8 @@ Plugin 'SirVer/ultisnips'
 
 Plugin 'honza/vim-snippets'
 
+Plugin 'fatih/vim-go'
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -164,7 +166,8 @@ set showmatch           " highlight matching [{()}]
 " Searching
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
-nnoremap <leader><space> :nohlsearch<CR>    
+map <silent> <leader><cr> :noh<cr>
+" nnoremap <leader><space> :nohlsearch<CR>
                         " turn off search highlight   "<leader>space"
 set ignorecase smartcase    " auto ignorecase when search
 
@@ -308,3 +311,24 @@ let g:SuperTabDefaultCompletionType = '<C-n>'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
+
+" vim go
+" syntax-highlighting
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 0
+let g:go_highlight_build_constraints = 1
+"
+let g:go_fmt_command = "goimports"
+let g:go_fmt_fail_silently = 1
+let g:go_fmt_autosave = 1
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>c <Plug>(go-coverage)
+
+" ignore some files
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,*.orig
