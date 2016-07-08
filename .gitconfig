@@ -1,0 +1,30 @@
+[user]
+	name = zrq495
+	email = zrq495@gmail.com
+[push]
+	default = simple
+[core]
+	editor = /usr/local/bin/vim
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[alias]
+	st = status
+	co = checkout
+    ci = commit
+	br = branch
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[filter "hawser"]
+	clean = git hawser clean %f
+	smudge = git hawser smudge %f
+	required = true
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[pull]
+	rebase = true
