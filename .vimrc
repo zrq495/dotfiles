@@ -13,6 +13,8 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'bling/vim-airline'
 
+Plugin 'vim-airline/vim-airline-themes'
+
 Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'Yggdroot/indentLine'
@@ -332,3 +334,7 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 
 " ignore some files
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,*.orig
+
+" NERDTree config
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif

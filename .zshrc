@@ -110,14 +110,17 @@ export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
   # boot2docker ssh '[ -f /var/lib/boot2docker/nsenter ] || docker run --rm -v /var/lib/boot2docker/:/target jpetazzo/nsenter'
   # boot2docker ssh -t sudo /var/lib/boot2docker/docker-enter "$@"
 # }
-export DOCKER_TLS_VERIFY="1"
-export DOCKER_HOST="tcp://192.168.99.100:2376"
-export DOCKER_CERT_PATH="/Users/zrq495/.docker/machine/machines/default"
-export DOCKER_MACHINE_NAME="default"
+# export DOCKER_TLS_VERIFY="1"
+# export DOCKER_HOST="tcp://192.168.99.100:2376"
+# export DOCKER_CERT_PATH="/Users/zrq495/.docker/machine/machines/default"
+# export DOCKER_MACHINE_NAME="default"
 # unset DOCKER_TLS_VERIFY
 # unset DOCKER_CERT_PATH
 # unset DOCKER_MACHINE_NAME
 # unset DOCKER_HOST
+# dvm
+# [[ -s "$(brew --prefix dvm)/dvm.sh" ]] && source "$(brew --prefix dvm)/dvm.sh"
+# [[ -s "$(brew --prefix dvm)/bash_completion" ]] && source "$(brew --prefix dvm)/bash_completion"
 
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
 source /usr/local/bin/virtualenvwrapper.sh
