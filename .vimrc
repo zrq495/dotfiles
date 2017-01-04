@@ -336,7 +336,7 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,*.orig
 
 " NERDTree config
-autocmd vimenter * NERDTree
+autocmd vimenter * NERDTree | wincmd p
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " faster!!!
