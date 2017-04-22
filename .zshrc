@@ -98,8 +98,9 @@ export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 PATH=$PATH:/usr/local/sbin
 
 # go
+export GOROOT=/usr/local/go
 export GOPATH=$HOME/Code/go
-export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
 
 # # docker

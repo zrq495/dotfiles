@@ -262,6 +262,7 @@ set statusline+=%*
 " let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']  "go checkers
 
 " the minimum number of screen lines that you would like above and below the cursor.
 :set scrolloff=5
@@ -327,10 +328,18 @@ let g:go_highlight_build_constraints = 1
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
 let g:go_fmt_autosave = 1
-au FileType go nmap <leader>r <Plug>(go-run)
+" au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>r  :<C-u>GoRun %<cr>
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <leader>ds <Plug>(go-def-split)
+au FileType go nmap <leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <leader>dt <Plug>(go-def-tab)
+au FileType go nmap <leader>gd <Plug>(go-doc)
+au FileType go nmap <leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <leader>s <Plug>(go-implements)
+au FileType go nmap <leader>e <Plug>(go-rename)
 
 " ignore some files
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,*.orig
