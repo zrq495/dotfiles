@@ -2,7 +2,7 @@
 	name = zrq495
 	email = zrq495@gmail.com
 [push]
-	default = simple
+	default = current
 [core]
 	editor = /usr/local/bin/vim
 	excludesfile = /Users/zrq495/.gitignore_global

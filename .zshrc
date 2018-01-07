@@ -89,6 +89,8 @@ alias bpy="bpython"
 alias ipy="ipython"
 alias ipyn="ipython notebook"
 
+alias crontab="VIM_CRONTAB=true EDITOR=vim crontab"
+
 
 # mysql PATH
 PATH="$PATH":/usr/local/mysql/bin
@@ -133,3 +135,6 @@ export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 export PATH="/usr/local/bin:$PATH"
 
 [[ -n "$SSH_CLIENT" ]] || export DEFAULT_USER="zrq495"
+
+# thefuck
+eval $(thefuck --alias)

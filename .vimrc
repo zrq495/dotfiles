@@ -15,6 +15,8 @@ Plugin 'bling/vim-airline'
 
 Plugin 'vim-airline/vim-airline-themes'
 
+Plugin 'altercation/vim-colors-solarized'
+
 Plugin 'terryma/vim-multiple-cursors'
 
 Plugin 'Yggdroot/indentLine'
@@ -46,6 +48,8 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 Plugin 'fatih/vim-go'
+
+Plugin 'tpope/vim-fugitive'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -140,7 +144,11 @@ set viminfo^=%
 
 " Colors
 syntax enable
+set t_Co=256
 set background=dark
+if $TERM_PROGRAM != "iTerm.app"
+    let g:solarized_termcolors=256
+endif
 if $TERM_PROGRAM == "Apple_Terminal"
     let g:solarized_termcolors=256
     let g:solarized_termtrans = 1
@@ -352,3 +360,17 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 set re=1
 set ttyfast
 set lazyredraw
+
+" for crontab
+if $VIM_CRONTAB == "true"
+    set nobackup
+    set nowritebackup
+endif
+
+" ack.vim 
+" use ag
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+cnoreabbrev Ack Ack!
+nnoremap <Leader>a :Ack!<Space>
