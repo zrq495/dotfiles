@@ -5,9 +5,10 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
-# ZSH_THEME="robbyrussell"
+ZSH_THEME="robbyrussell"
+# ZSH_THEME="agnoster"
 # ZSH_THEME="random"
+# ZSH_THEME="ys"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -47,7 +48,8 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git osx python tmux git-flow pip autojump brew sublime sudo docker go)
+# plugins=(git osx python tmux git-flow pip autojump brew sublime sudo docker go)
+plugins=(git autojump brew)
 
 [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 
@@ -55,7 +57,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
+# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -93,16 +95,17 @@ alias crontab="VIM_CRONTAB=true EDITOR=vim crontab"
 
 
 # mysql PATH
-PATH="$PATH":/usr/local/mysql/bin
-export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
+# PATH="$PATH":/usr/local/mysql/bin
+# export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 
 # rabbitmq-server
-PATH=$PATH:/usr/local/sbin
+# PATH=$PATH:/usr/local/sbin
 
 # go
-export GOROOT=/usr/local/go
-export GOPATH=$HOME/Code/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+# export GOROOT=/usr/local/go
+# export GOPATH=$HOME/Code/go
+# export PATH=$PATH:/usr/local/opt/go/libexec/bin
+# export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
 
 # # docker
@@ -125,16 +128,32 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # [[ -s "$(brew --prefix dvm)/dvm.sh" ]] && source "$(brew --prefix dvm)/dvm.sh"
 # [[ -s "$(brew --prefix dvm)/bash_completion" ]] && source "$(brew --prefix dvm)/bash_completion"
 
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
-source /usr/local/bin/virtualenvwrapper.sh
+# export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python2.7
+# source /usr/local/bin/virtualenvwrapper.sh
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 # fixes 10.11 sip(rootless)
-export PATH="/usr/local/bin:$PATH"
+# export PATH="/usr/local/bin:$PATH"
 
 [[ -n "$SSH_CLIENT" ]] || export DEFAULT_USER="zrq495"
 
 # thefuck
-eval $(thefuck --alias)
+# eval $(thefuck --alias)
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# export PATH="$PATH:$HOME/.rvm/bin"
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# # nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

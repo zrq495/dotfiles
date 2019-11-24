@@ -4,7 +4,7 @@
 [push]
 	default = current
 [core]
-	editor = /usr/local/bin/vim
+	editor = vim
 	excludesfile = /Users/zrq495/.gitignore_global
 [filter "media"]
 	required = true

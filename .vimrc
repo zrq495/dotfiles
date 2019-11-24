@@ -1,87 +1,28 @@
-" vundle begin
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin('~/.vim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'altercation/vim-colors-solarized'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'Yggdroot/indentLine'
+" Plug 'nvie/vim-flake8'
+Plug 'airblade/vim-gitgutter'
+Plug 'scrooloose/nerdtree'
+" Plug 'vim-syntastic/syntastic'
+Plug 'kshenoy/vim-signature'
+Plug 'scrooloose/nerdcommenter'
+" Plug 'jistr/vim-nerdtree-tabs'
+" Plug 'scrooloose/nerdtree'
+Plug 'ervandew/supertab'
+" Plug 'Valloric/YouCompleteMe'
+Plug 'mileszs/ack.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'fatih/vim-go'
+Plug 'tpope/vim-fugitive'
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+call plug#end()
 
-Plugin 'bling/vim-airline'
-
-Plugin 'vim-airline/vim-airline-themes'
-
-Plugin 'altercation/vim-colors-solarized'
-
-Plugin 'terryma/vim-multiple-cursors'
-
-Plugin 'Yggdroot/indentLine'
-
-" Plugin 'nvie/vim-flake8'
-
-Plugin 'airblade/vim-gitgutter'
-
-Plugin 'scrooloose/nerdtree'
-
-Plugin 'scrooloose/syntastic'
-
-Plugin 'kshenoy/vim-signature'
-
-Plugin 'scrooloose/nerdcommenter'
-
-" Plugin 'jistr/vim-nerdtree-tabs'
-
-" Plugin 'scrooloose/nerdtree'
-
-Bundle 'ervandew/supertab'
-
-Plugin 'Valloric/YouCompleteMe'
-
-Plugin 'mileszs/ack.vim'
-
-Plugin 'SirVer/ultisnips'
-
-Plugin 'honza/vim-snippets'
-
-Plugin 'fatih/vim-go'
-
-Plugin 'tpope/vim-fugitive'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Avoid a name conflict with L9
-"Plugin 'user/L9', {'name': 'newL9'}
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-" vundle end
 
 " change the mapleader from \ to ,
 let mapleader = ","
@@ -145,7 +86,8 @@ set viminfo^=%
 " Colors
 syntax enable
 set t_Co=256
-set background=dark
+" set background=dark
+set background=light
 if $TERM_PROGRAM != "iTerm.app"
     let g:solarized_termcolors=256
 endif
@@ -261,6 +203,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline_powerline_fonts = 1
 let g:airline_theme='solarized'
+" let g:airline_solarized_bg='dark'
 
 " syntastic
 set statusline+=%#warningmsg#
