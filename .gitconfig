@@ -4,7 +4,7 @@
 [push]
 	default = current
 [core]
-	editor = vim
+	editor = /usr/bin/vim
 	excludesfile = /Users/zrq495/.gitignore_global
 [filter "media"]
 	required = true
@@ -29,3 +29,5 @@
 	required = true
 [pull]
 	rebase = true
+[mergetool]
+	prompt = flase

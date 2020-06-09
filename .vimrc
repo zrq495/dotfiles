@@ -7,7 +7,9 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'Yggdroot/indentLine'
 " Plug 'nvie/vim-flake8'
 Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdtree'
+if !(&diff)
+  Plug 'scrooloose/nerdtree'
+endif
 " Plug 'vim-syntastic/syntastic'
 Plug 'kshenoy/vim-signature'
 Plug 'scrooloose/nerdcommenter'
@@ -16,7 +18,6 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ervandew/supertab'
 " Plug 'Valloric/YouCompleteMe'
 Plug 'mileszs/ack.vim'
-Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'fatih/vim-go'
 Plug 'tpope/vim-fugitive'
@@ -296,8 +297,10 @@ au FileType go nmap <leader>e <Plug>(go-rename)
 set wildignore=*.swp,*.bak,*.pyc,*.class,*.jar,*.gif,*.png,*.jpg,*.orig
 
 " NERDTree config
-autocmd vimenter * NERDTree | wincmd p
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+if !(&diff)
+  autocmd vimenter * NERDTree | wincmd p
+  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+endif
 
 " faster!!!
 set re=1
